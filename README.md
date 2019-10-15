@@ -5,4 +5,4 @@ A 3D maze created with Java and the Swing library.
 Click the `3D-Maze.jar` file
 
 ### Rebuild
-To rebuild the jar file, run `jar cvfe 3D-Maze.jar MazeProgram *.class` in the project director
+To rebuild the jar file, run `jar cvfe 3D-Maze.jar MazeProgram *.class` in the project directory
