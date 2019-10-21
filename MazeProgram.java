@@ -6,6 +6,9 @@ import java.awt.event.*;
 import java.io.*;
 import java.util.Scanner;
 import java.awt.FontMetrics;
+import java.awt.GradientPaint;
+import java.awt.Graphics2D;
+
 public class MazeProgram extends JPanel implements KeyListener,MouseListener
 {
 	JFrame frame;
@@ -130,7 +133,6 @@ public class MazeProgram extends JPanel implements KeyListener,MouseListener
 							if(wallArr[x][y] == 2){
 								g.setColor(new Color(0,colorVal,0,.5f));
 								if(xray){
-									System.out.println(Color.GREEN);
 									g.setColor(Color.GREEN);
 								}
 							}
@@ -150,7 +152,17 @@ public class MazeProgram extends JPanel implements KeyListener,MouseListener
 								//g.setColor(Color.WHITE);
 								//g.drawPolygon(xpoints, ypoints, 4);
 								//g.setColor(Color.GRAY);
-								g.fillPolygon(xpoints, ypoints, 4);
+								float distance2 = (float)Math.pow(Math.pow((float)x+1-(float)expX,2)+Math.pow((float)y-(float)expY,2),.5);
+								float colorVal2 = (255-distance2*50)/255;
+								if(flash)
+									colorVal2 = (255-distance2*10)/255;
+								if(colorVal2<0)
+									colorVal2 = 0;
+
+								Graphics2D g2d = (Graphics2D) g;
+
+								g2d.setPaint(new GradientPaint(xShift2+(int)initX, 0, new Color(colorVal,colorVal,colorVal), xShift+(int)(initX+xWall), 0, new Color(colorVal2,colorVal2,colorVal2)));
+								g2d.fillPolygon(xpoints, ypoints, 4);
 
 								xShift = yOffSet * (int)(realWindowWidth-initX*2);
 								if(x-1>=0 && wallArr[x-1][y] != 1){
@@ -167,6 +179,18 @@ public class MazeProgram extends JPanel implements KeyListener,MouseListener
 								//g.setColor(Color.WHITE);
 								//g.drawPolygon(xpoints, ypoints, 4);
 								//g.setColor(Color.GRAY);
+
+								float distance2 = (float)Math.pow(Math.pow((float)x+1-(float)expX,2)+Math.pow((float)y-(float)expY,2),.5);
+								float colorVal2 = (255-distance2*50)/255;
+								if(flash)
+									colorVal2 = (255-distance2*10)/255;
+								if(colorVal2<0)
+									colorVal2 = 0;
+
+								Graphics2D g2d = (Graphics2D) g;
+
+
+								g2d.setPaint(new GradientPaint(xShift2+(int)(realWindowWidth - initX), 0, new Color(colorVal,colorVal,colorVal), xShift+(int)(realWindowWidth-initX-xWall), 0, new Color(colorVal2,colorVal2,colorVal2)));
 								g.fillPolygon(xpoints, ypoints, 4);
 
 								xShift = yOffSet * (int)(realWindowWidth-initX*2);
