@@ -14,4 +14,4 @@ Press F to enable the flashlight. This will deduct 10000 points when you enable 
 Press X to enable the X-Ray view. This will deduct 5000 points when you enable it and another 5000 points every move you make with it enabled.
 
 ## Rebuild
-To rebuild the jar file, run `jar cvfe 3D-Maze.jar MazeProgram *.class` in the project directory
+To rebuild the jar file, run `jar cvfe 3D-Maze.jar MazeProgram *.class *.txt` in the project directory
